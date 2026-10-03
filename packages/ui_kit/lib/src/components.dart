@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'navigation.dart';
 import 'ui_tokens.dart';
 
-/// A scrollable page with safe insets and a readable maximum content width.
+/// The only screen structure: title bar, optional actions, scrollable content
+/// with safe insets and a readable maximum width, and the navigation slot
+/// contributed by an enclosing [UiNavigation]. Features fill the slots and
+/// never build a screen structure of their own.
 /// Children must use intrinsic height rather than vertical Expanded widgets.
 class UiPage extends StatelessWidget {
   const UiPage({
@@ -19,6 +23,7 @@ class UiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(title: Text(title), actions: actions),
+    bottomNavigationBar: UiNavigation.maybeOf(context)?.buildBar(),
     body: SafeArea(
       child: Align(
         alignment: Alignment.topCenter,

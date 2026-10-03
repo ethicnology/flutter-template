@@ -220,6 +220,8 @@ void main() {
       ),
     );
     expect(find.text('Active'), findsOneWidget);
+    expect(find.byType(Scaffold), findsOneWidget);
+    expect(find.byType(NavigationBar), findsOneWidget);
     await tester.tap(find.text('Review'));
     expect(selected, [1]);
     expect(tester.takeException(), isNull);

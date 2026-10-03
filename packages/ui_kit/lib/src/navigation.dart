@@ -12,36 +12,41 @@ final class UiDestination {
   final UiIcon icon;
 }
 
-/// Switches between top-level journeys. The caller owns the selected index and
-/// builds only the active child; inactive journeys are not kept mounted.
-class UiNavigation extends StatelessWidget {
+/// Contributes the navigation slot of every [UiPage] below it. The caller owns
+/// the selected index and builds only the active journey; inactive journeys
+/// are not kept mounted. Pages stay unaware of navigation, which keeps one
+/// screen structure per page.
+class UiNavigation extends InheritedWidget {
   const UiNavigation({
     required this.destinations,
     required this.selectedIndex,
     required this.onSelected,
-    required this.child,
+    required super.child,
     super.key,
   }) : assert(destinations.length >= 2, 'Navigation needs two destinations.');
 
   final List<UiDestination> destinations;
   final int selectedIndex;
   final ValueChanged<int> onSelected;
-  final Widget child;
+
+  static UiNavigation? maybeOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<UiNavigation>();
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    body: child,
-    bottomNavigationBar: NavigationBar(
-      selectedIndex: selectedIndex,
-      onDestinationSelected: onSelected,
-      destinations: [
-        for (final destination in destinations)
-          NavigationDestination(
-            icon: Icon(_glyph(destination.icon)),
-            label: destination.label,
-          ),
-      ],
-    ),
+  bool updateShouldNotify(UiNavigation oldWidget) =>
+      selectedIndex != oldWidget.selectedIndex ||
+      destinations != oldWidget.destinations;
+
+  Widget buildBar() => NavigationBar(
+    selectedIndex: selectedIndex,
+    onDestinationSelected: onSelected,
+    destinations: [
+      for (final destination in destinations)
+        NavigationDestination(
+          icon: Icon(_glyph(destination.icon)),
+          label: destination.label,
+        ),
+    ],
   );
 
   static IconData _glyph(UiIcon icon) => switch (icon) {
