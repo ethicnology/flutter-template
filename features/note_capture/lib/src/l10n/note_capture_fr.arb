@@ -1,0 +1,12 @@
+{
+  "@@locale": "fr",
+  "title": "Notes",
+  "noteLabel": "Votre note",
+  "save": "Enregistrer la note",
+  "retry": "Réessayer",
+  "empty": "Aucune note pour le moment. Écrivez votre première note ci-dessus.",
+  "emptyNote": "Écrivez une note avant de l’enregistrer.",
+  "noteTooLong": "Utilisez au maximum {maxLength} caractères.",
+  "unavailable": "Vos notes sont temporairement indisponibles. Réessayez.",
+  "saved": "Note enregistrée."
+}

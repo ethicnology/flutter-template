@@ -1,0 +1,6 @@
+arb-dir: lib/src/l10n
+template-arb-file: note_capture_en.arb
+output-dir: lib/src/l10n/generated
+output-localization-file: note_capture_localizations.dart
+output-class: NoteCaptureLocalizations
+nullable-getter: false

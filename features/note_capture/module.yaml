@@ -1,0 +1,4 @@
+role: feature
+responsibility: Capture and list notes with localized interaction states.
+storage: none
+allowed_dependencies: [notes, result, diagnostics, ui_kit]

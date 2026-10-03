@@ -1,0 +1,17 @@
+{
+  "@@locale": "en",
+  "title": "Notes",
+  "noteLabel": "Your note",
+  "save": "Save note",
+  "retry": "Try again",
+  "empty": "No notes yet. Write your first note above.",
+  "emptyNote": "Write a note before saving.",
+  "noteTooLong": "Use no more than {maxLength} characters.",
+  "@noteTooLong": {
+    "placeholders": {
+      "maxLength": {"type": "int"}
+    }
+  },
+  "unavailable": "Your notes are temporarily unavailable. Try again.",
+  "saved": "Note saved."
+}
