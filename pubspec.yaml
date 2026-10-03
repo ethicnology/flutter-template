@@ -1,0 +1,113 @@
+name: flutter_modular_template
+publish_to: none
+environment:
+  sdk: ^3.13.0
+workspace: []
+dev_dependencies:
+  analyzer: ^13.3.0
+  flutter_lints: ^6.0.0
+  melos: ^8.9.0
+  path: ^1.9.1
+  test: ^1.31.1
+  yaml: ^3.1.4
+melos:
+  ide:
+    intellij: false
+  categories:
+    apps:
+      - apps/**
+      - packages/ui_kit/example
+    features:
+      - features/**
+    packages:
+      - packages/**
+  command:
+    run:
+      noSelect: true
+    bootstrap:
+      enforceLockfile: true
+  scripts:
+    prepare:
+      description: Install locked dependencies and generate module sources.
+      run: dart run melos bootstrap && dart run melos run generate --no-select
+    generate:
+      description: Generate translations and private database code.
+      dependsOn:
+        - generate:l10n
+        - generate:database
+    generate:l10n:
+      description: Generate each feature's localized messages from ARB files.
+      exec:
+        command: flutter gen-l10n
+        concurrency: 1
+        failFast: true
+      packageFilters:
+        fileExists: l10n.yaml
+    generate:database:
+      description: Generate database code in dependency order.
+      exec:
+        command: dart run build_runner build
+        concurrency: 1
+        failFast: true
+        orderDependents: true
+      packageFilters:
+        dependsOn: drift_dev
+    analyze:
+      description: Analyze the complete workspace.
+      dependsOn:
+        - generate
+      run: flutter analyze --no-pub --fatal-infos
+    test:
+      description: Run Dart contracts, architecture checks, and Flutter widget tests.
+      dependsOn:
+        - generate
+        - test:tool
+        - test:dart
+        - test:flutter
+    test:tool:
+      run: dart run tool/test_module.dart dart test
+    test:dart:
+      exec:
+        command: dart run "$MELOS_ROOT_PATH/tool/test_module.dart" dart
+        concurrency: 1
+        failFast: true
+      packageFilters:
+        flutter: false
+        dirExists: test
+    test:flutter:
+      exec:
+        command: dart run "$MELOS_ROOT_PATH/tool/test_module.dart" flutter
+        concurrency: 1
+        failFast: true
+      packageFilters:
+        flutter: true
+        dirExists: test
+    architecture:
+      description: Check module inventory, allowed dependencies, cycles and imports.
+      run: dart run tool/check_architecture.dart
+    graph:
+      description: Generate the dependency diagram using Melos.
+      run: dart run tool/graph.dart
+    graph:check:
+      description: Reject a stale dependency diagram.
+      run: dart run tool/graph.dart --check
+    format:check:
+      description: Check formatting without changing sources.
+      run: dart format --output=none --set-exit-if-changed apps features packages tool test
+    verify:
+      description: Run the complete local verification used by CI.
+      dependsOn:
+        - generate
+        - architecture
+        - graph:check
+        - format:check
+        - analyze
+        - test
+    catalog:
+      description: Run the UI catalog in Chrome.
+      run: dart run tool/run_app.dart packages/ui_kit/example chrome
+      stdio: inherit
+    app:
+      description: Run the example app on an available native device.
+      run: dart run tool/run_app.dart apps/app
+      stdio: inherit
