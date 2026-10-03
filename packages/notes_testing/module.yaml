@@ -1,0 +1,4 @@
+role: foundation
+responsibility: Drive widget tests over real SQLite storage without fake-zone deadlocks.
+storage: none
+allowed_dependencies: [diagnostics, notes]

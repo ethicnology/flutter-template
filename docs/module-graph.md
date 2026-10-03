@@ -8,6 +8,8 @@ graph TD
   style diagnostics stroke:#811832
   notes["notes"]
   style notes stroke:#03c9dd
+  notes_testing["notes_testing"]
+  style notes_testing stroke:#9b95fb
   result["result"]
   style result stroke:#17bde3
   ui_kit["ui_kit"]
@@ -16,10 +18,13 @@ graph TD
   style widget_catalog stroke:#ed01df
   notes --> diagnostics
   notes --> result
+  notes_testing --> diagnostics
+  notes_testing --> notes
   widget_catalog --> ui_kit
   subgraph packages0 ["packages"]
     diagnostics
     notes
+    notes_testing
     result
     ui_kit
   end

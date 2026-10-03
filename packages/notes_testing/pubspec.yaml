@@ -1,0 +1,14 @@
+name: notes_testing
+version: 0.1.0
+description: Widget-test helpers that keep real SQLite work in the real async zone.
+publish_to: none
+resolution: workspace
+environment:
+  sdk: ^3.13.0
+dependencies:
+  diagnostics: ^0.1.0
+  flutter:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  notes: ^0.1.0
