@@ -5,6 +5,8 @@ environment:
 workspace:
   - packages/result
   - packages/diagnostics
+  - packages/ui_kit
+  - packages/ui_kit/example
 dev_dependencies:
   analyzer: ^13.3.0
   flutter_lints: ^6.0.0

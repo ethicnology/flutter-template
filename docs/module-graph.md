@@ -8,8 +8,14 @@ graph TD
   style diagnostics stroke:#811832
   result["result"]
   style result stroke:#17bde3
+  ui_kit["ui_kit"]
+  style ui_kit stroke:#375a43
+  widget_catalog["widget_catalog"]
+  style widget_catalog stroke:#ed01df
+  widget_catalog --> ui_kit
   subgraph packages0 ["packages"]
     diagnostics
     result
+    ui_kit
   end
 ```

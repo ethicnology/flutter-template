@@ -1,0 +1,21 @@
+name: widget_catalog
+description: Isolated visual review of the shared UI kit.
+version: 0.1.0
+publish_to: none
+resolution: workspace
+environment:
+  sdk: ^3.13.0
+dependencies:
+  cupertino_icons: ^2.0.0
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  ui_kit: ^0.1.0
+  widgetbook: ^3.25.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+flutter:
+  uses-material-design: true

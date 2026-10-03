@@ -1,0 +1,4 @@
+role: ui
+responsibility: Own shared visual components, themes and adaptive layouts.
+storage: none
+allowed_dependencies: []

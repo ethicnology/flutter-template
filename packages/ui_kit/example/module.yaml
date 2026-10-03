@@ -1,0 +1,4 @@
+role: catalog
+responsibility: Preview UI kit variants independently of features.
+storage: none
+allowed_dependencies: [ui_kit]
