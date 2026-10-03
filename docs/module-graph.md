@@ -16,6 +16,8 @@ graph TD
   style notes_testing stroke:#9b95fb
   result["result"]
   style result stroke:#17bde3
+  template_app["template_app"]
+  style template_app stroke:#388803
   ui_kit["ui_kit"]
   style ui_kit stroke:#375a43
   widget_catalog["widget_catalog"]
@@ -33,6 +35,13 @@ graph TD
   notes --> result
   notes_testing --> diagnostics
   notes_testing --> notes
+  template_app --> diagnostics
+  template_app --> note_capture
+  template_app --> note_review
+  template_app --> notes
+  template_app --> result
+  template_app --> ui_kit
+  template_app -.-> notes_testing
   widget_catalog --> ui_kit
   subgraph packages0 ["packages"]
     diagnostics

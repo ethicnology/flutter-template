@@ -1,0 +1,8 @@
+{
+  "@@locale": "en",
+  "title": "Modular App",
+  "captureDestination": "Capture",
+  "reviewDestination": "Review",
+  "unavailable": "Your notes are temporarily unavailable. Try again.",
+  "retry": "Try again"
+}

@@ -1,0 +1,26 @@
+name: template_app
+description: Thin composition shell for the modular example.
+version: 0.1.0+1
+publish_to: none
+resolution: workspace
+environment:
+  sdk: ^3.13.0
+dependencies:
+  diagnostics: ^0.1.0
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.3
+  note_capture: ^0.1.0
+  note_review: ^0.1.0
+  notes: ^0.1.0
+  result: ^0.1.0
+  ui_kit: ^0.1.0
+dev_dependencies:
+  notes_testing: ^0.1.0
+  flutter_test:
+    sdk: flutter
+flutter:
+  generate: true
+  uses-material-design: true

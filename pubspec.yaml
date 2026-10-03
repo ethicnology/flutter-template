@@ -3,14 +3,15 @@ publish_to: none
 environment:
   sdk: ^3.13.0
 workspace:
-  - packages/result
-  - packages/diagnostics
-  - packages/ui_kit
+  - apps/app
   - packages/ui_kit/example
-  - packages/notes
-  - packages/notes_testing
   - features/note_capture
   - features/note_review
+  - packages/diagnostics
+  - packages/notes
+  - packages/notes_testing
+  - packages/result
+  - packages/ui_kit
 dev_dependencies:
   analyzer: ^13.3.0
   flutter_lints: ^6.0.0

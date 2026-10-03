@@ -1,0 +1,4 @@
+role: shell
+responsibility: Compose public feature entry points, own the shared notes handle and global navigation.
+storage: none
+allowed_dependencies: [diagnostics, note_capture, note_review, notes, result, ui_kit]
