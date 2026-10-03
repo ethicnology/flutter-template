@@ -2,7 +2,9 @@ name: flutter_modular_template
 publish_to: none
 environment:
   sdk: ^3.13.0
-workspace: []
+workspace:
+  - packages/result
+  - packages/diagnostics
 dev_dependencies:
   analyzer: ^13.3.0
   flutter_lints: ^6.0.0

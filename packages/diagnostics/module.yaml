@@ -1,0 +1,4 @@
+role: foundation
+responsibility: Report developer diagnostics with explicit redaction.
+storage: none
+allowed_dependencies: []

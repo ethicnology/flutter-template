@@ -1,0 +1,4 @@
+role: foundation
+responsibility: Represent explicit typed operation outcomes.
+storage: none
+allowed_dependencies: []
