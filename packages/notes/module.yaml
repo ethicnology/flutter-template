@@ -1,0 +1,4 @@
+role: capability
+responsibility: Own note validation, collection operations and persistence.
+storage: private Drift SQLite database
+allowed_dependencies: [result, diagnostics]
