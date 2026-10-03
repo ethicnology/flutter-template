@@ -64,6 +64,10 @@ Add a short README with a consumer example and lifecycle/error guarantees. Keep 
 
 ## Customize before shipping
 
-Replace the sample capability and product description. Rename native identifiers, display names and icons; configure signing and supported platforms. The shell's bottom navigation is the minimal routing for two journeys; replace it with real routing and deep links when the product needs them, keeping ownership of app-scoped capabilities in the shell as `NotesOwner` demonstrates. Choose a license before public distribution. Do not treat the sample as a production security, synchronization, backup or release implementation.
+Replace the sample capability and product description. Rename native identifiers, display names and icons; configure signing and supported platforms. The shell's bottom navigation is the minimal routing for two journeys; replace it with real routing and deep links when the product needs them, keeping ownership of app-scoped capabilities in the shell as `NotesOwner` demonstrates. Do not treat the sample as a production security, synchronization, backup or release implementation.
 
 The included runners target Android, iOS and macOS. The notes backend is native-only; Widgetbook has a separate web target. Native platform builds, device behavior and release signing require their own validation. The GitHub workflow is prepared for a future repository; no workflow has been run remotely.
+
+## License
+
+The template is released under the [MIT License](LICENSE). Projects created from it may choose any license.
