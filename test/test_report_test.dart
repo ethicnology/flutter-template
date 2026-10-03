@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:test/test.dart';
 
 import '../tool/test_module.dart';
@@ -26,4 +28,19 @@ void main() {
       ..add({'type': 'done', 'success': true});
     expect(report.succeeded, isFalse);
   });
+
+  test(
+    'a reported error reaches stderr without crashing the reporter',
+    () async {
+      final run = await Process.run(Platform.resolvedExecutable, [
+        'run',
+        'tool/test_module.dart',
+        'dart',
+        'test/does_not_exist_test.dart',
+      ]);
+      expect(run.exitCode, 1);
+      expect(run.stderr, isNot(contains('Bad state')));
+      expect(run.stderr, contains('does_not_exist_test.dart'));
+    },
+  );
 }

@@ -34,7 +34,9 @@ Future<void> main(List<String> args) async {
     runInShell: Platform.isWindows,
   );
   final report = TestReport();
-  final errors = stderr.addStream(process.stderr);
+  // Forward child stderr without binding this sink: reporter writes must
+  // stay possible while the child is still running.
+  final errors = process.stderr.listen(stderr.add).asFuture<void>();
   await for (final line
       in process.stdout
           .transform(utf8.decoder)
