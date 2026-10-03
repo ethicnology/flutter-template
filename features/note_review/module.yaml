@@ -1,0 +1,4 @@
+role: feature
+responsibility: Review the current notes snapshot with localized states; never owns storage.
+storage: none
+allowed_dependencies: [notes, result, ui_kit]

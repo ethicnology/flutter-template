@@ -8,6 +8,8 @@ graph TD
   style diagnostics stroke:#811832
   note_capture["note_capture"]
   style note_capture stroke:#abf59e
+  note_review["note_review"]
+  style note_review stroke:#30e857
   notes["notes"]
   style notes stroke:#03c9dd
   notes_testing["notes_testing"]
@@ -23,6 +25,10 @@ graph TD
   note_capture --> result
   note_capture --> ui_kit
   note_capture -.-> notes_testing
+  note_review --> notes
+  note_review --> result
+  note_review --> ui_kit
+  note_review -.-> notes_testing
   notes --> diagnostics
   notes --> result
   notes_testing --> diagnostics
@@ -34,5 +40,9 @@ graph TD
     notes_testing
     result
     ui_kit
+  end
+  subgraph features1 ["features"]
+    note_capture
+    note_review
   end
 ```

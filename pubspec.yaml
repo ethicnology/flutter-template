@@ -10,6 +10,7 @@ workspace:
   - packages/notes
   - packages/notes_testing
   - features/note_capture
+  - features/note_review
 dev_dependencies:
   analyzer: ^13.3.0
   flutter_lints: ^6.0.0

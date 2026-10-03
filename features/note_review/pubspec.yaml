@@ -1,0 +1,23 @@
+name: note_review
+version: 0.1.0
+description: A localized read-only review journey over a borrowed notes collection.
+publish_to: none
+resolution: workspace
+environment:
+  sdk: ^3.13.0
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.3
+  notes: ^0.1.0
+  result: ^0.1.0
+  ui_kit: ^0.1.0
+dev_dependencies:
+  notes_testing: ^0.1.0
+  flutter_test:
+    sdk: flutter
+flutter:
+  generate: true
+  uses-material-design: true
