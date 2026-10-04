@@ -52,7 +52,7 @@ Root commands are listed by `dart run melos run`:
 | `graph` | Refresh the Mermaid diagram using Melos |
 | `verify` | Generate once, then check boundaries, graph, formatting, analysis and tests |
 
-Generation and verification are intentionally explicit. Incremental source fingerprints and affected-only CI are not enabled in this starter: global configuration changes and external generator inputs need a defined invalidation policy first. A green command must represent the tests intended to run.
+Generated sources are not committed: run `prepare` after cloning, and `generate` after changing an ARB file or a Drift table. Generation and verification are intentionally explicit. Incremental source fingerprints and affected-only CI are not enabled in this starter: global configuration changes and external generator inputs need a defined invalidation policy first. A green command must represent the tests intended to run.
 
 Workspace scripts disable interactive package selection, so `dart run melos run verify` checks every eligible module. Use explicit package filters or run tests from one module when you intentionally want a narrower check. Widgetbook is a separate application package under `ui_kit/example`: it depends on the kit, and the kit never depends on the catalog.
 

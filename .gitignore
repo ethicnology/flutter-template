@@ -2,6 +2,10 @@
 .fvm/
 build/
 coverage/
+
+# Generated sources: produced by `dart run melos run generate`, never committed.
+*.g.dart
+**/l10n/generated/
 *.iml
 .idea/
 .DS_Store
