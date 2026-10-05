@@ -13,5 +13,6 @@
     }
   },
   "unavailable": "Your notes are temporarily unavailable. Try again.",
-  "saved": "Note saved."
+  "saved": "Note saved.",
+  "reviewAll": "See all notes"
 }

@@ -64,6 +64,28 @@ void main() {
     expect((stored as Success).value.single.text, 'A note from the feature');
   });
 
+  testWidgetsWithNotes('hides the review action when no intent is wired', (
+    tester,
+    notes,
+  ) async {
+    await pumpWithNotes(tester, _app(notes), notes);
+    expect(find.text('See all notes'), findsNothing);
+  });
+
+  testWidgetsWithNotes('reports a review request without knowing the target', (
+    tester,
+    notes,
+  ) async {
+    var requests = 0;
+    await pumpWithNotes(
+      tester,
+      _app(notes, onReviewRequested: () => requests++),
+      notes,
+    );
+    await tester.tap(find.text('See all notes'));
+    expect(requests, 1);
+  });
+
   testWidgetsWithNotes('shows notes written by another journey', (
     tester,
     notes,
@@ -123,10 +145,14 @@ void main() {
   );
 }
 
-Widget _app(Notes notes, {Locale locale = const Locale('en')}) => UiKitApp(
+Widget _app(
+  Notes notes, {
+  Locale locale = const Locale('en'),
+  VoidCallback? onReviewRequested,
+}) => UiKitApp(
   title: 'Note capture test',
   locale: locale,
   supportedLocales: NoteCaptureLocalizations.supportedLocales,
   localizationsDelegates: [NoteCaptureLocalizations.delegate],
-  home: NoteCaptureScreen(notes: notes),
+  home: NoteCaptureScreen(notes: notes, onReviewRequested: onReviewRequested),
 );

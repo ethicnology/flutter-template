@@ -34,10 +34,11 @@ void main() {
       );
       expect(find.text('Note saved.'), findsOneWidget);
 
+      // The capture journey's intent, wired by the shell, opens the review.
       await settleNotes(
         tester,
         notes,
-        action: () => tester.tap(find.text('Review')),
+        action: () => tester.tap(find.text('See all notes')),
       );
       expect(find.byType(NoteCaptureScreen), findsNothing);
       expect(find.byType(NoteReviewScreen), findsOneWidget);
