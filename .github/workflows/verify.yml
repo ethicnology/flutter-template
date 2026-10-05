@@ -21,7 +21,9 @@ jobs:
           cache: true
       - run: flutter pub get --enforce-lockfile
       - run: dart run melos run verify --no-select
-      - name: Check generated files remain current
+      # Generated sources are not committed; this proves generation and
+      # verification left every tracked file untouched and added no stray file.
+      - name: Check the working tree stayed clean
         run: |
           git diff --exit-code
           test -z "$(git ls-files --others --exclude-standard)"
