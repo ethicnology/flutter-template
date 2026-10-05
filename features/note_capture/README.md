@@ -15,6 +15,8 @@ UiKitApp(
 
 The shell contributes the route and diagnostic policy. It does not construct SQLite, Drift, repositories, or storage-error mappings. `NoteCaptureFeature` opens storage, renders a localized retry on initialization failure, closes its collection on disposal, and closes late initialization results if its route has already disappeared.
 
+`NoteCaptureScreen` exposes one typed intent, `onReviewRequested`, for the case where the product has a review journey: the shell wires it to a tab or a route, and the feature never imports that journey. Leave it null, as `NoteCaptureFeature` does, and the control is not shown. This is how a feature reaches another one in this template; see the ownership decision.
+
 `NoteCaptureFeature` is the entry point when this is the only journey that needs notes. It requires a single concurrently mounted instance for the default database; it does not enforce a process-wide singleton. When several journeys share notes, as the application shell does with `note_review`, their common owner opens one `Notes` handle and passes it to `NoteCaptureScreen(notes: notes)`; that owner waits for all consumers to stop and then awaits `close()`. For tests or embedded demonstrations, the same borrowed screen accepts `Notes.inMemory`. Replacing its collection resets the list and discards results from the previous collection.
 
 ## State and failures

@@ -11,10 +11,22 @@ import 'note_capture_controller.dart';
 import 'note_capture_state.dart';
 
 /// Renders the journey using an already-open collection owned by its caller.
+///
+/// The journey never imports another feature. Where another journey would
+/// make sense, it exposes a typed intent such as [onReviewRequested], and the
+/// shell decides what that intent leads to. A null intent hides its control,
+/// so the journey also works in a product that has no review.
 final class NoteCaptureScreen extends StatefulWidget {
-  const NoteCaptureScreen({required this.notes, super.key});
+  const NoteCaptureScreen({
+    required this.notes,
+    this.onReviewRequested,
+    super.key,
+  });
 
   final Notes notes;
+
+  /// Called when the user asks to see every note. Null hides the action.
+  final VoidCallback? onReviewRequested;
 
   @override
   State<NoteCaptureScreen> createState() => _NoteCaptureScreenState();
@@ -99,6 +111,8 @@ final class _NoteCaptureScreenState extends State<NoteCaptureScreen> {
               if (submission case Rejected(failure: NotesUnavailable()))
                 UiError(strings.unavailable),
               if (submission is Submitted) UiText(strings.saved),
+              if (widget.onReviewRequested case final open?)
+                UiButton(label: strings.reviewAll, onPressed: open),
               switch (list) {
                 null => const UiLoading(),
                 Failure(:final failure) => UiColumn(

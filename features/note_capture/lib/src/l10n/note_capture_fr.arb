@@ -8,5 +8,6 @@
   "emptyNote": "Écrivez une note avant de l’enregistrer.",
   "noteTooLong": "Utilisez au maximum {maxLength} caractères.",
   "unavailable": "Vos notes sont temporairement indisponibles. Réessayez.",
-  "saved": "Note enregistrée."
+  "saved": "Note enregistrée.",
+  "reviewAll": "Voir toutes les notes"
 }

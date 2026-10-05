@@ -73,8 +73,13 @@ final class _AppHomeState extends State<AppHome> {
       ],
       selectedIndex: _selected,
       onSelected: (index) => setState(() => _selected = index),
+      // The only place where capture and review meet: the capture journey
+      // exposes an intent, the shell decides it leads to the review tab.
       child: switch (_selected) {
-        0 => NoteCaptureScreen(notes: widget.notes),
+        0 => NoteCaptureScreen(
+          notes: widget.notes,
+          onReviewRequested: () => setState(() => _selected = 1),
+        ),
         _ => NoteReviewScreen(notes: widget.notes),
       },
     );
